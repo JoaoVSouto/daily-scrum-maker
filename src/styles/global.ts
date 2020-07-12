@@ -32,6 +32,10 @@ export default createGlobalStyle`
     background-image: url(${clouds});
     background-repeat: no-repeat;
     background-position: right 12vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   body,
