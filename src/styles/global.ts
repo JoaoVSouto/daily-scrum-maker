@@ -40,6 +40,7 @@ export default createGlobalStyle`
 
   body,
   input,
+  textarea,
   button {
     font-family: 'Lato', sans-serif;
   }
