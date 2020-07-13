@@ -7,7 +7,7 @@ export const Container = styled.div`
 
   > h1 {
     color: #fff;
-    font-size: 3rem;
+    font-size: 2.9rem;
     text-align: center;
   }
 `;
