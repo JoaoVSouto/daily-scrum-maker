@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import TextareaAutosize from 'react-autosize-textarea';
 
 export const Container = styled.div`
@@ -33,11 +33,19 @@ export const Textarea = styled(TextareaAutosize)`
 `;
 
 interface Error {
-  activated?: boolean;
+  activated: boolean;
 }
 
 export const Error = styled.span<Error>`
   color: ${props => props.theme.tertiary};
-  opacity: ${props => (props.activated ? '1' : '0')};
-  transition: opacity 0.3s;
+  opacity: 0;
+  max-height: 0;
+  transition: all 0.3s;
+
+  ${props =>
+    props.activated &&
+    css`
+      opacity: 1;
+      max-height: unset;
+    `}
 `;

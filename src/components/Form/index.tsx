@@ -71,16 +71,43 @@ const Form: React.FC = () => {
     }
   };
 
+  const handleInputChange = (inputName: keyof FormData): void => {
+    const inputValue = unformRef.current?.getFieldValue(inputName) as
+      | string
+      | undefined;
+
+    if (inputValue?.trim()) {
+      const currentErrors = unformRef.current?.getErrors() || {};
+
+      delete currentErrors[inputName];
+
+      unformRef.current?.setErrors(currentErrors);
+    }
+  };
+
   return (
     <Container>
       <Unform ref={unformRef} onSubmit={handleSubmit}>
         <Textarea
           name="didLastExpedient"
           label="O que fiz no último expediente?"
+          changeHandler={handleInputChange}
         />
-        <Textarea name="difficulties" label="Dificuldades?" />
-        <Textarea name="doingToday" label="O que pretendo fazer hoje?" />
-        <Textarea name="howAmI" label="Como estou fisicamente e mentalmente?" />
+        <Textarea
+          name="difficulties"
+          label="Dificuldades?"
+          changeHandler={handleInputChange}
+        />
+        <Textarea
+          name="doingToday"
+          label="O que pretendo fazer hoje?"
+          changeHandler={handleInputChange}
+        />
+        <Textarea
+          name="howAmI"
+          label="Como estou fisicamente e mentalmente?"
+          changeHandler={handleInputChange}
+        />
 
         <Button
           type="submit"

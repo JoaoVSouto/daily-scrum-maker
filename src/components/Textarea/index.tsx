@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useField } from '@unform/core';
 
 import { Container, Label, Textarea as TextareaElement, Error } from './styles';
@@ -6,12 +6,20 @@ import { Container, Label, Textarea as TextareaElement, Error } from './styles';
 interface Props {
   name: string;
   label?: string;
+  changeHandler?(fieldName: string): void;
 }
 
 type TextareaProps = JSX.IntrinsicElements['textarea'] & Props;
 
-const Textarea: React.FC<TextareaProps> = ({ name, label, ...rest }) => {
+const Textarea: React.FC<TextareaProps> = ({
+  name,
+  label,
+  changeHandler,
+  ...rest
+}) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  const [lastError, setLastError] = useState('');
 
   const { fieldName, defaultValue, registerField, error } = useField(name);
 
@@ -23,6 +31,12 @@ const Textarea: React.FC<TextareaProps> = ({ name, label, ...rest }) => {
     });
   }, [fieldName, registerField]);
 
+  useEffect(() => {
+    if (error) {
+      setLastError(error);
+    }
+  }, [error]);
+
   return (
     <Container>
       {label && <Label htmlFor={fieldName}>{label}</Label>}
@@ -31,10 +45,11 @@ const Textarea: React.FC<TextareaProps> = ({ name, label, ...rest }) => {
         id={fieldName}
         ref={textareaRef as any}
         defaultValue={defaultValue}
+        onChange={() => changeHandler && changeHandler(fieldName)}
         {...rest}
       />
 
-      <Error activated={!!error}>{error}</Error>
+      <Error activated={!!error}>{error || lastError}</Error>
     </Container>
   );
 };
