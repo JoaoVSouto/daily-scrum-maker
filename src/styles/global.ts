@@ -42,7 +42,7 @@ export default createGlobalStyle`
   input,
   textarea,
   button {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Fira Sans', sans-serif;
   }
 
   @keyframes cloudsSlide {

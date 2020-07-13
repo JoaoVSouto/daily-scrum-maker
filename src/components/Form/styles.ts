@@ -29,6 +29,7 @@ export const Button = styled.button<Button>`
   position: relative;
   overflow: hidden;
   transition-duration: 0.5s;
+  user-select: none;
 
   &::before {
     content: 'Copiado!';

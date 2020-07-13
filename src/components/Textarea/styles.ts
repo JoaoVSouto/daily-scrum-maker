@@ -5,6 +5,12 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
+  &:focus-within {
+    label {
+      transform: translateX(8px);
+    }
+  }
+
   & + & {
     margin-top: 24px;
   }
@@ -14,6 +20,7 @@ export const Label = styled.label`
   color: #fff;
   font-weight: bold;
   font-size: 16px;
+  transition: all 0.3s;
 `;
 
 export const Textarea = styled(TextareaAutosize)`
@@ -47,5 +54,6 @@ export const Error = styled.span<Error>`
     css`
       opacity: 1;
       max-height: unset;
+      margin-top: 8px;
     `}
 `;
