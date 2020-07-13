@@ -62,7 +62,7 @@ export const Button = styled.button<Button>`
       left: 0;
       width: 100%;
       height: 22px;
-      filter: brightness(5000%);
+      filter: brightness(0) invert(1);
       background: url(${wave});
       animation: slideWaves 0.5s linear infinite;
     }
