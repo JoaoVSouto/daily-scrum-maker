@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 import getRandomNumber from '../utils/random';
 
-import clouds from '../assets/clouds.svg';
+import cloud from '../assets/cloud.svg';
 import manyClouds from '../assets/many_clouds.svg';
 
 export default createGlobalStyle`
@@ -29,13 +29,18 @@ export default createGlobalStyle`
   }
 
   #root {
-    background-image: url(${clouds});
+    background-image: url(${cloud});
     background-repeat: no-repeat;
-    background-position: right 12vw;
+    background-position: left calc(100vh - 350px);
+    background-size: 900px;
 
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media (max-width: 768px) {
+      background-image: none;
+    }
   }
 
   body,

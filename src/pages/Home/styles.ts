@@ -10,4 +10,10 @@ export const Container = styled.div`
 
   max-width: 900px;
   height: 70vh;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    height: auto;
+  }
 `;
