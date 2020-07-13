@@ -31,3 +31,13 @@ export const Textarea = styled(TextareaAutosize)`
     box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.2);
   }
 `;
+
+interface Error {
+  activated?: boolean;
+}
+
+export const Error = styled.span<Error>`
+  color: ${props => props.theme.tertiary};
+  opacity: ${props => (props.activated ? '1' : '0')};
+  transition: opacity 0.3s;
+`;

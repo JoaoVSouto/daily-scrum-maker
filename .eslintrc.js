@@ -31,6 +31,7 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     'prettier/prettier': 'error',
     'import/prefer-default-export': 'off',
+    'no-unused-expressions': 'off',
     'import/extensions': [
       'error',
       'ignorePackages',

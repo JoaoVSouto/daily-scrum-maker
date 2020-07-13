@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useField } from '@unform/core';
 
-import { Container, Label, Textarea as TextareaElement } from './styles';
+import { Container, Label, Textarea as TextareaElement, Error } from './styles';
 
 interface Props {
   name: string;
@@ -34,7 +34,7 @@ const Textarea: React.FC<TextareaProps> = ({ name, label, ...rest }) => {
         {...rest}
       />
 
-      {error && <span>{error}</span>}
+      <Error activated={!!error}>{error}</Error>
     </Container>
   );
 };
