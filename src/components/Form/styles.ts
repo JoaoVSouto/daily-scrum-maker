@@ -37,6 +37,7 @@ interface Button {
 
 export const Button = styled.button<Button>`
   margin-top: 16px;
+  margin-bottom: 1px;
   align-self: flex-end;
   padding: 8px 16px;
   font-size: 16px;
