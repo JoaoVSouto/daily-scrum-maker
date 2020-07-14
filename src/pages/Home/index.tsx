@@ -1,6 +1,8 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 
+import 'simplebar/dist/simplebar.min.css';
+
 import { Container } from './styles';
 
 import Sidebar from '../../components/Sidebar';

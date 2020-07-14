@@ -1,9 +1,30 @@
 import styled, { css } from 'styled-components';
 import { Form as Unform } from '@unform/web';
+import SimpleBar from 'simplebar-react';
 
 import wave from '../../assets/wave.png';
 
-export const Container = styled.div``;
+export const Container = styled(SimpleBar)`
+  max-height: calc(70vh - 48px);
+
+  .simplebar-track.simplebar-horizontal {
+    visibility: hidden !important;
+    display: none !important;
+  }
+
+  .simplebar-track.simplebar-vertical {
+    right: -18px;
+
+    .simplebar-scrollbar::before {
+      background-color: #fff;
+      transition: opacity 0.3s linear;
+    }
+
+    .simplebar-scrollbar.simplebar-visible::before {
+      opacity: 0.8;
+    }
+  }
+`;
 
 export const Form = styled(Unform)`
   display: flex;
