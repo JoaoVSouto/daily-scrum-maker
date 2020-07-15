@@ -30,12 +30,12 @@ export const Textarea = styled(TextareaAutosize)`
   border: 0;
   border-radius: 4px;
   color: #fff;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: ${props => props.theme.inputBackground};
   font-size: 1.1rem;
   transition: box-shadow 0.1s;
 
   &:focus {
-    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 2px 2px ${props => props.theme.inputBackground};
   }
 `;
 

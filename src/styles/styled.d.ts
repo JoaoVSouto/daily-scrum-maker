@@ -2,13 +2,17 @@ import 'styled-components';
 
 declare module 'styled-components' {
   export interface DefaultTheme {
+    type: string;
+
     primaryDark: string;
     primary: string;
     primaryLight: string;
 
-    secondary: string;
-    secondaryLight: string;
-
     tertiary: string;
+
+    inputBackground: string;
+
+    cloud: string;
+    clouds: string;
   }
 }

@@ -1,9 +1,8 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
 
 import getRandomNumber from '../utils/random';
 
-import cloud from '../assets/cloud.svg';
-import manyClouds from '../assets/many_clouds.svg';
+import stars from '../assets/stars.svg';
 
 export default createGlobalStyle`
   * {
@@ -19,17 +18,25 @@ export default createGlobalStyle`
     height: 100%;
   }
 
+  html {
+    ${props =>
+      props.theme.type === 'dark' &&
+      css`
+        background: url(${stars}) repeat-x;
+      `}
+    background-color: ${props => props.theme.primary};
+  }
+
   body {
     -webkit-font-smoothing: antialiased !important;
 
-    background-color: ${props => props.theme.primary};
-    background-image: url(${manyClouds});
+    background-image: url(${props => props.theme.clouds});
     background-size: 290%;
     animation: cloudsSlide 2880s linear forwards infinite;
   }
 
   #root {
-    background-image: url(${cloud});
+    background-image: url(${props => props.theme.cloud});
     background-repeat: no-repeat;
     background-position: left calc(100vh - 350px);
     background-size: 900px;
