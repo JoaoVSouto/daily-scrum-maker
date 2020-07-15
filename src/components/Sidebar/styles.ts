@@ -35,6 +35,7 @@ export const ToggleThemeContainer = styled.div`
 export const ToggleThemeCheckbox = styled.input.attrs({
   type: 'checkbox',
 })`
+  opacity: 0;
   height: 0;
   transition: all 250ms ease-in;
 
