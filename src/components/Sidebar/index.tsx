@@ -10,7 +10,7 @@ import {
 import useTheme from '../../hooks/useTheme';
 
 const Sidebar: React.FC = () => {
-  const { changeTheme } = useTheme();
+  const { changeTheme, theme } = useTheme();
 
   const handleCheckboxChange = (
     e: React.ChangeEvent<HTMLInputElement>
@@ -32,7 +32,7 @@ const Sidebar: React.FC = () => {
       <ToggleThemeContainer>
         <ToggleThemeCheckbox
           id="toggle-theme"
-          defaultChecked
+          checked={theme === 'light'}
           onChange={handleCheckboxChange}
         />
         <ToggleThemeLabel htmlFor="toggle-theme">
