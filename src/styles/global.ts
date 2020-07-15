@@ -19,9 +19,18 @@ export default createGlobalStyle`
   }
 
   html {
-    background: ${props =>
-      props.theme.type === 'dark' ? `url(${stars}) repeat-x` : 'none'};
+    background: url(${stars}) repeat-x;
     background-color: ${props => props.theme.primary};
+    transition: background-color 0.3s, ${props =>
+      props.theme.type === 'light'
+        ? 'background-position-y 0s'
+        : 'background-position-y 0.3s ease-out 0.1s'};
+    background-position-y: ${props =>
+      props.theme.type === 'dark' ? '0' : '-100vh'};
+
+    &.no-transition {
+      transition: all 0s;
+    }
   }
 
   body {

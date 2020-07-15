@@ -32,7 +32,7 @@ export const Textarea = styled(TextareaAutosize)`
   color: #fff;
   background-color: ${props => props.theme.inputBackground};
   font-size: 1.1rem;
-  transition: box-shadow 0.1s;
+  transition: background-color 0.3s, box-shadow 0.1s;
 
   &:focus {
     box-shadow: 0 0 2px 2px ${props => props.theme.inputBackground};

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { Container } from './styles';
 
@@ -10,6 +10,10 @@ import AppProvider from '../../contexts/AppProvider';
 import GlobalStyles from '../../styles/global';
 
 const Home: React.FC = () => {
+  useEffect(() => {
+    document.querySelector('html')?.classList.remove('no-transition');
+  }, []);
+
   return (
     <>
       <AppProvider>
