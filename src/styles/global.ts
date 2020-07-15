@@ -1,4 +1,4 @@
-import { createGlobalStyle, css } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
 import getRandomNumber from '../utils/random';
 
@@ -19,11 +19,8 @@ export default createGlobalStyle`
   }
 
   html {
-    ${props =>
-      props.theme.type === 'dark' &&
-      css`
-        background: url(${stars}) repeat-x;
-      `}
+    background: ${props =>
+      props.theme.type === 'dark' ? `url(${stars}) repeat-x` : 'none'};
     background-color: ${props => props.theme.primary};
   }
 
