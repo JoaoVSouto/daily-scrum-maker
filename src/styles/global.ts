@@ -54,6 +54,10 @@ export default createGlobalStyle`
     @media (max-width: 768px) {
       background-image: none;
     }
+
+    @media (max-width: 576px) {
+      margin: 48px 0;
+    }
   }
 
   body,
