@@ -1,6 +1,8 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext } from 'react';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+
+import usePersistedState from '../hooks/usePersistedState';
 
 import light from '../styles/themes/light';
 import dark from '../styles/themes/dark';
@@ -15,7 +17,10 @@ export interface ThemeContext {
 export const ThemeContext = createContext<ThemeContext>({} as ThemeContext);
 
 export const ThemeProvider: React.FC = ({ children }) => {
-  const [theme, setTheme] = useState<themeOptions>('dark');
+  const [theme, setTheme] = usePersistedState<themeOptions>(
+    '@ds/theme',
+    'light'
+  );
 
   const changeTheme = (newTheme: themeOptions): void => {
     setTheme(newTheme);
