@@ -1,5 +1,6 @@
 import React, { createContext, useState } from 'react';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 import light from '../styles/themes/light';
 import dark from '../styles/themes/dark';
@@ -23,7 +24,15 @@ export const ThemeProvider: React.FC = ({ children }) => {
   return (
     <StyledThemeProvider theme={theme === 'light' ? light : dark}>
       <ThemeContext.Provider value={{ changeTheme, theme }}>
-        {children}
+        <HelmetProvider>
+          <Helmet>
+            <meta
+              name="theme-color"
+              content={theme === 'light' ? light.primary : dark.primary}
+            />
+          </Helmet>
+          {children}
+        </HelmetProvider>
       </ThemeContext.Provider>
     </StyledThemeProvider>
   );
