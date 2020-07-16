@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.js": "/daily-scrum-maker/static/js/main.0873c4f7.chunk.js",
-    "main.js.map": "/daily-scrum-maker/static/js/main.0873c4f7.chunk.js.map",
+    "main.js": "/daily-scrum-maker/static/js/main.0289495b.chunk.js",
+    "main.js.map": "/daily-scrum-maker/static/js/main.0289495b.chunk.js.map",
     "runtime-main.js": "/daily-scrum-maker/static/js/runtime-main.155c100c.js",
     "runtime-main.js.map": "/daily-scrum-maker/static/js/runtime-main.155c100c.js.map",
     "static/css/2.51270f71.chunk.css": "/daily-scrum-maker/static/css/2.51270f71.chunk.css",
     "static/js/2.57536d03.chunk.js": "/daily-scrum-maker/static/js/2.57536d03.chunk.js",
     "static/js/2.57536d03.chunk.js.map": "/daily-scrum-maker/static/js/2.57536d03.chunk.js.map",
     "index.html": "/daily-scrum-maker/index.html",
-    "precache-manifest.5c88c917ffc3a354aa39e83f64ff87e3.js": "/daily-scrum-maker/precache-manifest.5c88c917ffc3a354aa39e83f64ff87e3.js",
+    "precache-manifest.d216fa0300cb154088831d836ac9de40.js": "/daily-scrum-maker/precache-manifest.d216fa0300cb154088831d836ac9de40.js",
     "service-worker.js": "/daily-scrum-maker/service-worker.js",
     "static/css/2.51270f71.chunk.css.map": "/daily-scrum-maker/static/css/2.51270f71.chunk.css.map",
     "static/js/2.57536d03.chunk.js.LICENSE.txt": "/daily-scrum-maker/static/js/2.57536d03.chunk.js.LICENSE.txt",
@@ -22,6 +22,6 @@
     "static/js/runtime-main.155c100c.js",
     "static/css/2.51270f71.chunk.css",
     "static/js/2.57536d03.chunk.js",
-    "static/js/main.0873c4f7.chunk.js"
+    "static/js/main.0289495b.chunk.js"
   ]
 }

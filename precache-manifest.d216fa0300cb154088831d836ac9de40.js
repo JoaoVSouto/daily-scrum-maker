@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "eef9c5962d293e532fa92d0a5191a49e",
+    "revision": "8afeb8f59e19f0f2c9748fc4b4948223",
     "url": "/daily-scrum-maker/index.html"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/daily-scrum-maker/static/js/2.57536d03.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "bfba3252770ddf425d5e",
-    "url": "/daily-scrum-maker/static/js/main.0873c4f7.chunk.js"
+    "revision": "535b4aa46a318b2ec505",
+    "url": "/daily-scrum-maker/static/js/main.0289495b.chunk.js"
   },
   {
     "revision": "b0936dd1009e236e9012",
