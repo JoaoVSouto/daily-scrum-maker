@@ -39,7 +39,7 @@ const Form: React.FC = () => {
         ['O que fiz no último expediente?', didLastExpedient],
         ['Dificuldades?', difficulties],
         ['O que pretendo fazer hoje?', doingToday],
-        ['Como estou?', howAmI],
+        ['Como estou fisicamente e mentalmente?', howAmI],
       ];
 
       const titlesAndContentsStringified = titlesAndContents
