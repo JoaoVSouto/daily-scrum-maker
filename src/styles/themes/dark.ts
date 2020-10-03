@@ -1,4 +1,4 @@
-import { rgba } from 'polished';
+import { rgba, lighten } from 'polished';
 
 import cloud from '../../assets/cloud_dark.svg';
 import clouds from '../../assets/many_clouds_dark.svg';
@@ -13,6 +13,7 @@ export default {
   tertiary: '#f9f871',
 
   inputBackground: rgba('#333', 0.4),
+  placeholder: lighten(0.2, '#333'),
 
   cloud,
   clouds,

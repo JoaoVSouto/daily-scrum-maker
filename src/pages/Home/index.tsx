@@ -1,15 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Container } from './styles';
 
 import Sidebar from '../../components/Sidebar';
 import Form from '../../components/Form';
+import FormWithTopics from '../../components/FormWithTopics';
 
 import AppProvider from '../../contexts/AppProvider';
 
 import GlobalStyles from '../../styles/global';
 
 const Home: React.FC = () => {
+  const [isTopicsMode] = useState(true);
+
   useEffect(() => {
     document.querySelector('html')?.classList.remove('no-transition');
   }, []);
@@ -19,7 +22,7 @@ const Home: React.FC = () => {
       <AppProvider>
         <Container>
           <Sidebar />
-          <Form />
+          {isTopicsMode ? <FormWithTopics /> : <Form />}
         </Container>
 
         <GlobalStyles />

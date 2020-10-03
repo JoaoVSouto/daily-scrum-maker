@@ -7,6 +7,7 @@ interface Props {
   name: string;
   label?: string;
   changeHandler?(fieldName: string): void;
+  subtopic?: boolean;
 }
 
 type TextareaProps = JSX.IntrinsicElements['textarea'] & Props;
@@ -15,6 +16,7 @@ const Textarea: React.FC<TextareaProps> = ({
   name,
   label,
   changeHandler,
+  subtopic,
   ...rest
 }) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -38,7 +40,7 @@ const Textarea: React.FC<TextareaProps> = ({
   }, [error]);
 
   return (
-    <Container>
+    <Container className={subtopic ? '--subtopic' : ''}>
       {label && <Label htmlFor={fieldName}>{label}</Label>}
 
       <TextareaElement
@@ -46,6 +48,7 @@ const Textarea: React.FC<TextareaProps> = ({
         ref={textareaRef as any}
         defaultValue={defaultValue}
         onChange={() => changeHandler && changeHandler(fieldName)}
+        className={subtopic ? '--subtopic' : ''}
         {...rest}
       />
 
