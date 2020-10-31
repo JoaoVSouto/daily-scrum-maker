@@ -11,7 +11,7 @@ const BaseTopicButton = styled.button`
   padding-left: 10px;
   margin-top: 8px;
   border-radius: 4px;
-  transition: border 0.3s, color 0.3s;
+  transition: all 0.3s;
 
   display: flex;
   align-items: center;
@@ -36,6 +36,12 @@ const BaseTopicButton = styled.button`
 export const AddTopicButton = styled(BaseTopicButton)`
   background-color: #fff;
   color: ${props => props.theme.primary};
+
+  &:hover,
+  &:focus {
+    color: #fff;
+    background-color: transparent;
+  }
 `;
 
 export const AddSubtopicButton = styled(BaseTopicButton)``;

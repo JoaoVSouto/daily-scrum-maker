@@ -121,6 +121,30 @@ const FormWithTopics: React.FC = () => {
     setDidLastExpedientTopics(topics => [...topics, newTopic]);
   }, []);
 
+  const handleAddNewDidLastExpedientSubtopic = useCallback(
+    (id: string) => {
+      const newSubtopic: Subtopic = {
+        id: nanoid(),
+        value: '',
+      };
+
+      const updatedDidLastExpedientTopics = [...didLastExpedientTopics];
+
+      const selectedTopic = updatedDidLastExpedientTopics.find(
+        didLastExpedientTopic => didLastExpedientTopic.id === id
+      );
+
+      if (!selectedTopic) {
+        return;
+      }
+
+      selectedTopic.subtopics.push(newSubtopic);
+
+      setDidLastExpedientTopics(updatedDidLastExpedientTopics);
+    },
+    [didLastExpedientTopics]
+  );
+
   return (
     <Container>
       <Unform ref={unformRef} onSubmit={handleSubmit}>
@@ -131,20 +155,25 @@ const FormWithTopics: React.FC = () => {
               name={`didLastExpedient-${didLastExpedientTopic.id}`}
               placeholder={`Título do tópico ${index + 1}`}
             />
-            <AddSubtopicButton type="button">
+            {didLastExpedientTopic.subtopics.map((subtopic, idx) => (
+              <Textarea
+                key={subtopic.id}
+                name={`didLastExpedient-${didLastExpedientTopic.id}-subtopic-${subtopic.id}`}
+                placeholder={`Subtópico ${idx + 1}`}
+                subtopic
+              />
+            ))}
+            <AddSubtopicButton
+              type="button"
+              onClick={() =>
+                handleAddNewDidLastExpedientSubtopic(didLastExpedientTopic.id)
+              }
+            >
               Novo subtópico
               <FiPlus size={24} />
             </AddSubtopicButton>
           </Fragment>
         ))}
-        {/* {didLastExpedientSubtopics.map((didLastExpedientSubtopic, index) => (
-          <Textarea
-            key={didLastExpedientSubtopic.id}
-            name={`didLastExpedient-subtopic-${didLastExpedientSubtopic.id}`}
-            placeholder={`Subtópico ${index + 1}`}
-            subtopic
-          />
-        ))} */}
         <AddTopicButton
           type="button"
           onClick={handleAddNewDidLastExpedientTopic}
