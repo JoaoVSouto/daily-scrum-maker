@@ -1,17 +1,31 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import { SubmitHandler, FormHandles } from '@unform/core';
 import copy from 'copy-to-clipboard';
 import * as Yup from 'yup';
+import { nanoid } from 'nanoid';
+import { FiPlus } from 'react-icons/fi';
 
 import Textarea from '../Textarea';
 
 import { Container, Form as Unform, Button } from '../Form/styles';
+import { AddTopicButton } from './styles';
 
 interface FormData {
   didLastExpedient: string;
   difficulties: string;
   doingToday: string;
   howAmI: string;
+}
+
+interface Subtopic {
+  id: string;
+  value: string;
+}
+
+interface Topic {
+  id: string;
+  title: string;
+  subtopics: Subtopic[];
 }
 
 const schema = Yup.object().shape({
@@ -24,6 +38,10 @@ const schema = Yup.object().shape({
 const FormWithTopics: React.FC = () => {
   const unformRef = useRef<FormHandles>(null);
   const [activated, setActivated] = useState(false);
+
+  const [didLastExpedientTopics, setDidLastExpedientTopics] = useState<Topic[]>(
+    []
+  );
 
   const handleSubmit: SubmitHandler<FormData> = async data => {
     try {
@@ -85,6 +103,16 @@ const FormWithTopics: React.FC = () => {
     }
   };
 
+  const handleAddNewDidLastExpedientTopic = useCallback(() => {
+    const newTopic: Topic = {
+      id: nanoid(),
+      title: '',
+      subtopics: [],
+    };
+
+    setDidLastExpedientTopics(topics => [...topics, newTopic]);
+  }, []);
+
   return (
     <Container>
       <Unform ref={unformRef} onSubmit={handleSubmit}>
@@ -94,16 +122,28 @@ const FormWithTopics: React.FC = () => {
           changeHandler={handleInputChange}
           placeholder="Título do tópico 1"
         />
-        <Textarea
-          name="didLastExpedient-topic-1"
-          placeholder="Título do subtópico 1"
-          subtopic
-        />
-        <Textarea
-          name="didLastExpedient-topic-2"
-          placeholder="Título do subtópico 2"
-          subtopic
-        />
+        {didLastExpedientTopics.map((didLastExpedientTopic, index) => (
+          <Textarea
+            key={didLastExpedientTopic.id}
+            name={`didLastExpedient-${didLastExpedientTopic.id}`}
+            placeholder={`Título do tópico ${index + 2}`}
+          />
+        ))}
+        {/* {didLastExpedientSubtopics.map((didLastExpedientSubtopic, index) => (
+          <Textarea
+            key={didLastExpedientSubtopic.id}
+            name={`didLastExpedient-subtopic-${didLastExpedientSubtopic.id}`}
+            placeholder={`Subtópico ${index + 1}`}
+            subtopic
+          />
+        ))} */}
+        <AddTopicButton
+          type="button"
+          onClick={handleAddNewDidLastExpedientTopic}
+        >
+          Novo tópico
+          <FiPlus size={24} />
+        </AddTopicButton>
 
         <Textarea
           name="difficulties"
