@@ -108,6 +108,36 @@ const FormWithTopics: React.FC = () => {
     );
   }, []);
 
+  const deleteDidLastExpedientSubtopic = useCallback(
+    (fieldName: string) => {
+      const [, nameWithoutContext] = fieldName.split('didLastExpedient-');
+      const [topicId, subtopicId] = nameWithoutContext.split('-subtopic-');
+
+      const updatedDidLastExpedientTopics = [...didLastExpedientTopics];
+
+      const topic = updatedDidLastExpedientTopics.find(
+        didLastExpedientTopic => didLastExpedientTopic.id === topicId
+      );
+
+      if (!topic) {
+        return;
+      }
+
+      const subtopicIndex = topic.subtopics.findIndex(
+        subtopics => subtopics.id === subtopicId
+      );
+
+      if (subtopicIndex < 0) {
+        return;
+      }
+
+      topic.subtopics.splice(subtopicIndex, 1);
+
+      setDidLastExpedientTopics(updatedDidLastExpedientTopics);
+    },
+    [didLastExpedientTopics]
+  );
+
   return (
     <Container>
       <Unform ref={unformRef} onSubmit={handleSubmit}>
@@ -124,7 +154,7 @@ const FormWithTopics: React.FC = () => {
                 key={subtopic.id}
                 name={`didLastExpedient-${didLastExpedientTopic.id}-subtopic-${subtopic.id}`}
                 placeholder={`Subtópico ${idx + 1}`}
-                onDeleteTopic={deleteDidLastExpedientTopic}
+                onDeleteTopic={deleteDidLastExpedientSubtopic}
                 subtopic
               />
             ))}
