@@ -12,6 +12,7 @@ declare module 'styled-components' {
 
     inputBackground: string;
     placeholder: string;
+    tooltipBackground: string;
 
     cloud: string;
     clouds: string;

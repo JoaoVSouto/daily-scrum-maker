@@ -14,6 +14,7 @@ export default {
 
   inputBackground: rgba('#333', 0.4),
   placeholder: lighten(0.2, '#333'),
+  tooltipBackground: rgba('#fff', 0.8),
 
   cloud,
   clouds,
