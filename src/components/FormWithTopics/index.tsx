@@ -100,6 +100,14 @@ const FormWithTopics: React.FC = () => {
     [didLastExpedientTopics]
   );
 
+  const deleteDidLastExpedientTopic = useCallback((fieldName: string) => {
+    const [, topicId] = fieldName.split('didLastExpedient-');
+
+    setDidLastExpedientTopics(topics =>
+      topics.filter(topic => topic.id !== topicId)
+    );
+  }, []);
+
   return (
     <Container>
       <Unform ref={unformRef} onSubmit={handleSubmit}>
@@ -109,12 +117,14 @@ const FormWithTopics: React.FC = () => {
               label={didLastExpedientTopic.label}
               name={`didLastExpedient-${didLastExpedientTopic.id}`}
               placeholder={`Título do tópico ${index + 1}`}
+              onDeleteTopic={index !== 0 && deleteDidLastExpedientTopic}
             />
             {didLastExpedientTopic.subtopics.map((subtopic, idx) => (
               <Textarea
                 key={subtopic.id}
                 name={`didLastExpedient-${didLastExpedientTopic.id}-subtopic-${subtopic.id}`}
                 placeholder={`Subtópico ${idx + 1}`}
+                onDeleteTopic={deleteDidLastExpedientTopic}
                 subtopic
               />
             ))}
