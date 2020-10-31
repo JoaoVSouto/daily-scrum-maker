@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React, { Fragment, useState, useRef, useCallback } from 'react';
 import { SubmitHandler, FormHandles } from '@unform/core';
 import copy from 'copy-to-clipboard';
 import * as Yup from 'yup';
@@ -8,7 +8,7 @@ import { FiPlus } from 'react-icons/fi';
 import Textarea from '../Textarea';
 
 import { Container, Form as Unform, Button } from '../Form/styles';
-import { AddTopicButton } from './styles';
+import { AddTopicButton, AddSubtopicButton } from './styles';
 
 interface FormData {
   didLastExpedient: string;
@@ -25,6 +25,7 @@ interface Subtopic {
 interface Topic {
   id: string;
   title: string;
+  label?: string;
   subtopics: Subtopic[];
 }
 
@@ -40,7 +41,14 @@ const FormWithTopics: React.FC = () => {
   const [activated, setActivated] = useState(false);
 
   const [didLastExpedientTopics, setDidLastExpedientTopics] = useState<Topic[]>(
-    []
+    [
+      {
+        id: nanoid(),
+        title: '',
+        label: 'O que fiz no último expediente?',
+        subtopics: [],
+      },
+    ]
   );
 
   const handleSubmit: SubmitHandler<FormData> = async data => {
@@ -116,18 +124,18 @@ const FormWithTopics: React.FC = () => {
   return (
     <Container>
       <Unform ref={unformRef} onSubmit={handleSubmit}>
-        <Textarea
-          name="didLastExpedient"
-          label="O que fiz no último expediente?"
-          changeHandler={handleInputChange}
-          placeholder="Título do tópico 1"
-        />
         {didLastExpedientTopics.map((didLastExpedientTopic, index) => (
-          <Textarea
-            key={didLastExpedientTopic.id}
-            name={`didLastExpedient-${didLastExpedientTopic.id}`}
-            placeholder={`Título do tópico ${index + 2}`}
-          />
+          <Fragment key={didLastExpedientTopic.id}>
+            <Textarea
+              label={didLastExpedientTopic.label}
+              name={`didLastExpedient-${didLastExpedientTopic.id}`}
+              placeholder={`Título do tópico ${index + 1}`}
+            />
+            <AddSubtopicButton type="button">
+              Novo subtópico
+              <FiPlus size={24} />
+            </AddSubtopicButton>
+          </Fragment>
         ))}
         {/* {didLastExpedientSubtopics.map((didLastExpedientSubtopic, index) => (
           <Textarea

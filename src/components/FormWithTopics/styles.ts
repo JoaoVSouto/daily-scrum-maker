@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const AddTopicButton = styled.button`
+const BaseTopicButton = styled.button`
   cursor: pointer;
   align-self: flex-end;
   border: 0;
@@ -11,7 +11,7 @@ export const AddTopicButton = styled.button`
   padding-left: 10px;
   margin-top: 8px;
   border-radius: 4px;
-  transition: border 0.3s;
+  transition: border 0.3s, color 0.3s;
 
   display: flex;
   align-items: center;
@@ -32,3 +32,10 @@ export const AddTopicButton = styled.button`
     transition: transform 0.3s;
   }
 `;
+
+export const AddTopicButton = styled(BaseTopicButton)`
+  background-color: #fff;
+  color: ${props => props.theme.primary};
+`;
+
+export const AddSubtopicButton = styled(BaseTopicButton)``;
