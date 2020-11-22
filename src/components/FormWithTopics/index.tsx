@@ -31,6 +31,7 @@ const FormWithTopics: React.FC = () => {
     topics: didLastExpedientTopics,
     handleAddNewTopic: handleAddNewDidLastExpedientTopic,
     removeTopic: deleteDidLastExpedientTopic,
+    getTopicsText: getDidLastExpedientText,
   } = useTopicFields({
     unformRef,
     context: 'didLastExpedient',
@@ -47,6 +48,7 @@ const FormWithTopics: React.FC = () => {
     topics: doingTodayTopics,
     handleAddNewTopic: handleAddNewDoingTodayTopic,
     removeTopic: deleteDoingTodayTopic,
+    getTopicsText: getDoingTodayText,
   } = useTopicFields({
     unformRef,
     context: 'doingToday',
@@ -59,15 +61,10 @@ const FormWithTopics: React.FC = () => {
   });
 
   const handleSubmit: SubmitHandler<FormData> = async data => {
-    const didLastExpedientData = Object.entries(data).filter(([fieldName]) =>
-      fieldName.startsWith('didLastExpedient')
-    );
+    const didLastExpedient = getDidLastExpedientText();
+    const doingToday = getDoingTodayText();
 
-    const didLastExpedient = didLastExpedientData
-      .map(([, text]) => text)
-      .join('\n\n');
-
-    const { difficulties, doingToday, howAmI } = data;
+    const { difficulties, howAmI } = data;
 
     setActivated(true);
 
@@ -110,7 +107,6 @@ const FormWithTopics: React.FC = () => {
 
         <Textarea name="difficulties" label="Dificuldades?" />
 
-        <Textarea name="doingToday" label="O que pretendo fazer hoje?" />
         {doingTodayTopics.map((doingTodayTopic, index) => (
           <Fragment key={doingTodayTopic.id}>
             <Textarea

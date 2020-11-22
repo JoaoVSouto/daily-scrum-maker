@@ -18,6 +18,7 @@ interface TopicFieldsResponse {
   topics: Topic[];
   handleAddNewTopic(): void;
   removeTopic(fieldName: string): void;
+  getTopicsText(): string;
 }
 
 const useTopicFields = ({
@@ -42,6 +43,16 @@ const useTopicFields = ({
     isFirstRender.current = false;
   }, [topics, context, unformRef, shouldFocusOnFirstRender]);
 
+  const getTopicsText = useCallback(() => {
+    const topicsData = Object.entries(
+      unformRef.current?.getData() || {}
+    ).filter(([fieldName]) => fieldName.startsWith(context));
+
+    const topicsText = topicsData.map(([, text]) => text).join('\n\n');
+
+    return topicsText;
+  }, [context, unformRef]);
+
   const handleAddNewTopic = useCallback(() => {
     const newTopic: Topic = { id: nanoid() };
 
@@ -61,6 +72,7 @@ const useTopicFields = ({
     topics,
     handleAddNewTopic,
     removeTopic,
+    getTopicsText,
   };
 };
 
