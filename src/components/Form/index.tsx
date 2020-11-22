@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { SubmitHandler, FormHandles } from '@unform/core';
 import copy from 'copy-to-clipboard';
 import * as Yup from 'yup';
@@ -24,6 +24,10 @@ const schema = Yup.object().shape({
 const Form: React.FC = () => {
   const unformRef = useRef<FormHandles>(null);
   const [activated, setActivated] = useState(false);
+
+  useEffect(() => {
+    unformRef.current?.getFieldRef('didLastExpedient').focus();
+  }, []);
 
   const handleSubmit: SubmitHandler<FormData> = async data => {
     try {
