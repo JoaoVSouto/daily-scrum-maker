@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { Container } from './styles';
 
@@ -11,17 +11,24 @@ import AppProvider from '../../contexts/AppProvider';
 import GlobalStyles from '../../styles/global';
 
 const Home: React.FC = () => {
-  const [isTopicsMode] = useState(true);
+  const [isTopicsMode, setIsTopicsMode] = useState(false);
 
   useEffect(() => {
     document.querySelector('html')?.classList.remove('no-transition');
   }, []);
 
+  const handleChangeTopic = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setIsTopicsMode(e.target.checked);
+    },
+    []
+  );
+
   return (
     <>
       <AppProvider>
         <Container>
-          <Sidebar />
+          <Sidebar onChangeTopic={handleChangeTopic} />
           {isTopicsMode ? <FormWithTopics /> : <Form />}
         </Container>
 
