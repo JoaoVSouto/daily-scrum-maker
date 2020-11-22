@@ -47,7 +47,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onChangeTopic }) => {
       </ToggleThemeContainer>
 
       <ToggleTopicModeContainer>
-        <strong>Modo de tópicos?</strong>
+        <strong>Separar por tópicos?</strong>
         <input type="checkbox" id="toggle-topic" onChange={onChangeTopic} />
         <ToggleTopicModeLabel htmlFor="toggle-topic" />
       </ToggleTopicModeContainer>

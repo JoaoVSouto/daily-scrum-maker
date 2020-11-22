@@ -265,12 +265,12 @@ export const ToggleTopicModeLabel = styled.label`
   }
 
   &::before {
-    content: 'OFF';
+    content: 'NÃO';
     left: 0;
   }
 
   &::after {
-    content: 'ON';
+    content: 'SIM';
     left: 100%;
   }
 `;
