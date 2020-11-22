@@ -1,16 +1,12 @@
-import React, {
-  Fragment,
-  useState,
-  useRef,
-  useCallback,
-  useEffect,
-} from 'react';
+import React, { Fragment, useState, useRef } from 'react';
 import { SubmitHandler, FormHandles } from '@unform/core';
 import copy from 'copy-to-clipboard';
 import { nanoid } from 'nanoid';
 import { FiEdit2 } from 'react-icons/fi';
 
 import Textarea from '../Textarea';
+
+import useTopicFields from '../../hooks/useTopicFields';
 
 import { Container, Form as Unform, Button } from '../Form/styles';
 import { AddTopicButton } from './styles';
@@ -31,20 +27,36 @@ const FormWithTopics: React.FC = () => {
   const unformRef = useRef<FormHandles>(null);
   const [activated, setActivated] = useState(false);
 
-  const [didLastExpedientTopics, setDidLastExpedientTopics] = useState<Topic[]>(
-    [
+  const {
+    topics: didLastExpedientTopics,
+    handleAddNewTopic: handleAddNewDidLastExpedientTopic,
+    removeTopic: deleteDidLastExpedientTopic,
+  } = useTopicFields({
+    unformRef,
+    context: 'didLastExpedient',
+    initialValue: [
       {
         id: nanoid(),
         label: 'O que fiz no último expediente?',
       },
-    ]
-  );
+    ],
+    shouldFocusOnFirstRender: true,
+  });
 
-  useEffect(() => {
-    const lastTopic = didLastExpedientTopics[didLastExpedientTopics.length - 1];
-
-    unformRef.current?.getFieldRef(`didLastExpedient-${lastTopic.id}`).focus();
-  }, [didLastExpedientTopics]);
+  const {
+    topics: doingTodayTopics,
+    handleAddNewTopic: handleAddNewDoingTodayTopic,
+    removeTopic: deleteDoingTodayTopic,
+  } = useTopicFields({
+    unformRef,
+    context: 'doingToday',
+    initialValue: [
+      {
+        id: nanoid(),
+        label: 'O que pretendo fazer hoje?',
+      },
+    ],
+  });
 
   const handleSubmit: SubmitHandler<FormData> = async data => {
     const didLastExpedientData = Object.entries(data).filter(([fieldName]) =>
@@ -74,20 +86,6 @@ const FormWithTopics: React.FC = () => {
     copy(dailyScrum);
   };
 
-  const handleAddNewDidLastExpedientTopic = useCallback(() => {
-    const newTopic: Topic = { id: nanoid() };
-
-    setDidLastExpedientTopics(topics => [...topics, newTopic]);
-  }, []);
-
-  const deleteDidLastExpedientTopic = useCallback((fieldName: string) => {
-    const [, topicId] = fieldName.split('didLastExpedient-');
-
-    setDidLastExpedientTopics(topics =>
-      topics.filter(topic => topic.id !== topicId)
-    );
-  }, []);
-
   return (
     <Container>
       <Unform ref={unformRef} onSubmit={handleSubmit}>
@@ -113,6 +111,21 @@ const FormWithTopics: React.FC = () => {
         <Textarea name="difficulties" label="Dificuldades?" />
 
         <Textarea name="doingToday" label="O que pretendo fazer hoje?" />
+        {doingTodayTopics.map((doingTodayTopic, index) => (
+          <Fragment key={doingTodayTopic.id}>
+            <Textarea
+              label={doingTodayTopic.label}
+              name={`doingToday-${doingTodayTopic.id}`}
+              placeholder={`Tópico ${index + 1}`}
+              onDeleteTopic={index !== 0 && deleteDoingTodayTopic}
+              isSubsequentTopic={index > 0}
+            />
+          </Fragment>
+        ))}
+        <AddTopicButton type="button" onClick={handleAddNewDoingTodayTopic}>
+          Novo tópico
+          <FiEdit2 size={16} />
+        </AddTopicButton>
 
         <Textarea name="howAmI" label="Como estou fisicamente e mentalmente?" />
 
