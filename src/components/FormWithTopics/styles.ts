@@ -33,14 +33,7 @@ const BaseTopicButton = styled.button`
 `;
 
 export const AddTopicButton = styled(BaseTopicButton)`
-  background-color: #fff;
-  color: ${props => props.theme.primary};
-
-  &:hover,
-  &:focus {
-    color: #fff;
-    background-color: transparent;
+  + div {
+    margin-top: 16px;
   }
 `;
-
-export const AddSubtopicButton = styled(BaseTopicButton)``;

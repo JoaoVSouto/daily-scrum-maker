@@ -1,7 +1,11 @@
 import styled, { css } from 'styled-components';
 import TextareaAutosize from 'react-autosize-textarea';
 
-export const Container = styled.div`
+interface ContainerProps {
+  isSubsequentTopic?: boolean;
+}
+
+export const Container = styled.div<ContainerProps>`
   display: flex;
   flex-direction: column;
 
@@ -15,12 +19,8 @@ export const Container = styled.div`
     margin-top: 24px;
   }
 
-  &:not(.--subtopic) + &.--subtopic {
+  + .--subsequent {
     margin-top: 16px;
-  }
-
-  &.--subtopic + &.--subtopic {
-    margin-top: 12px;
   }
 `;
 
@@ -36,11 +36,6 @@ export const TextareaContainer = styled.div`
   align-items: center;
 
   margin-top: 8px;
-
-  &.--subtopic {
-    margin-top: 0;
-    margin-left: 16px;
-  }
 `;
 
 export const Textarea = styled(TextareaAutosize)`
@@ -74,11 +69,6 @@ export const DeleteTopicButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-
-  &.--subtopic::before {
-    content: 'Remover subtópico';
-    left: -126px;
-  }
 
   &:hover,
   &:focus {

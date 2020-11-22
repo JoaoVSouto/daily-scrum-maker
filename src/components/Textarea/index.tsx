@@ -15,8 +15,8 @@ interface Props {
   name: string;
   label?: string;
   changeHandler?(fieldName: string): void;
-  subtopic?: boolean;
   onDeleteTopic?: ((fieldName: string) => void) | false;
+  isSubsequentTopic?: boolean;
 }
 
 type TextareaProps = JSX.IntrinsicElements['textarea'] & Props;
@@ -25,8 +25,8 @@ const Textarea: React.FC<TextareaProps> = ({
   name,
   label,
   changeHandler,
-  subtopic,
   onDeleteTopic,
+  isSubsequentTopic,
   ...rest
 }) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -50,10 +50,10 @@ const Textarea: React.FC<TextareaProps> = ({
   }, [error]);
 
   return (
-    <Container className={subtopic ? '--subtopic' : ''}>
+    <Container className={isSubsequentTopic ? '--subsequent' : ''}>
       {label && <Label htmlFor={fieldName}>{label}</Label>}
 
-      <TextareaContainer className={subtopic ? '--subtopic' : ''}>
+      <TextareaContainer>
         <TextareaElement
           id={fieldName}
           ref={textareaRef as any}
@@ -65,7 +65,6 @@ const Textarea: React.FC<TextareaProps> = ({
           <DeleteTopicButton
             type="button"
             onClick={() => onDeleteTopic(fieldName)}
-            className={subtopic ? '--subtopic' : ''}
           >
             <FiX size={24} />
           </DeleteTopicButton>
