@@ -1,4 +1,10 @@
-import React, { Fragment, useState, useRef, useCallback } from 'react';
+import React, {
+  Fragment,
+  useState,
+  useRef,
+  useCallback,
+  useEffect,
+} from 'react';
 import { SubmitHandler, FormHandles } from '@unform/core';
 import copy from 'copy-to-clipboard';
 import { nanoid } from 'nanoid';
@@ -33,6 +39,12 @@ const FormWithTopics: React.FC = () => {
       },
     ]
   );
+
+  useEffect(() => {
+    const lastTopic = didLastExpedientTopics[didLastExpedientTopics.length - 1];
+
+    unformRef.current?.getFieldRef(`didLastExpedient-${lastTopic.id}`).focus();
+  }, [didLastExpedientTopics]);
 
   const handleSubmit: SubmitHandler<FormData> = async data => {
     const didLastExpedientData = Object.entries(data).filter(([fieldName]) =>
