@@ -5,7 +5,9 @@ import getRandomNumber from '../utils/random';
 import stars from '../assets/stars.svg';
 
 export default createGlobalStyle`
-  * {
+  *,
+  *::before,
+  *::after {
     margin: 0;
     padding: 0;
     outline: 0;

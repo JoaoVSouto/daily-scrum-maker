@@ -5,11 +5,18 @@ import {
   ToggleThemeContainer,
   ToggleThemeCheckbox,
   ToggleThemeLabel,
+  ToggleTopicModeContainer,
+  ToggleTopicModeLabel,
 } from './styles';
 
 import useTheme from '../../hooks/useTheme';
 
-const Sidebar: React.FC = () => {
+interface SidebarProps {
+  topic: 'on' | 'off';
+  onChangeTopic(e: React.ChangeEvent<HTMLInputElement>): void;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ topic, onChangeTopic }) => {
   const { changeTheme, theme } = useTheme();
 
   const handleCheckboxChange = (
@@ -39,6 +46,17 @@ const Sidebar: React.FC = () => {
           <span />
         </ToggleThemeLabel>
       </ToggleThemeContainer>
+
+      <ToggleTopicModeContainer>
+        <strong>Separar por tópicos?</strong>
+        <input
+          type="checkbox"
+          id="toggle-topic"
+          checked={topic === 'on'}
+          onChange={onChangeTopic}
+        />
+        <ToggleTopicModeLabel htmlFor="toggle-topic" />
+      </ToggleTopicModeContainer>
     </Container>
   );
 };

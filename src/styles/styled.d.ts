@@ -11,6 +11,8 @@ declare module 'styled-components' {
     tertiary: string;
 
     inputBackground: string;
+    placeholder: string;
+    tooltipBackground: string;
 
     cloud: string;
     clouds: string;

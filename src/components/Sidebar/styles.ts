@@ -202,3 +202,75 @@ export const ToggleThemeLabel = styled.label`
     }
   }
 `;
+
+export const ToggleTopicModeContainer = styled.div`
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  strong {
+    color: #fff;
+  }
+
+  input {
+    opacity: 0;
+    height: 0;
+
+    &:focus + label {
+      box-shadow: 0 0 0 4px #fff;
+    }
+
+    &:checked + label {
+      transform: skew(10deg);
+
+      &::before {
+        left: -100%;
+      }
+
+      &::after {
+        left: 0;
+        transform: skew(-10deg);
+      }
+    }
+  }
+`;
+
+// Based on https://codepen.io/mallendeo/pen/eLIiG
+export const ToggleTopicModeLabel = styled.label`
+  margin-top: 16px;
+  cursor: pointer;
+  height: 32px;
+  width: 64px;
+  position: relative;
+  display: block;
+  transition: all 200ms ease;
+  backface-visibility: hidden;
+  overflow: hidden;
+  transform: skew(-10deg);
+  background-color: transparent;
+  box-shadow: 0 0 0 2px #fff;
+
+  &::before,
+  &::after {
+    transform: skew(10deg);
+    display: inline-block;
+    transition: all 200ms ease;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    line-height: 32px;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  &::before {
+    content: 'NÃO';
+    left: 0;
+  }
+
+  &::after {
+    content: 'SIM';
+    left: 100%;
+  }
+`;

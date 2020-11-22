@@ -27,6 +27,7 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off',
     'react/prop-types': 'off',
     'react/jsx-filename-extension': [1, { extensions: ['.tsx'] }],
+    'react/jsx-curly-newline': 'off',
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'prettier/prettier': 'error',
