@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4ddac749e6c0cd3a8b1e42ecb7359478",
+    "revision": "62775a1d53f536f058750682f82e5805",
     "url": "/daily-scrum-maker/index.html"
   },
   {
-    "revision": "836833f0eebcd6fe727c",
+    "revision": "8ff7e49872913c640240",
     "url": "/daily-scrum-maker/static/css/2.51270f71.chunk.css"
   },
   {
-    "revision": "836833f0eebcd6fe727c",
-    "url": "/daily-scrum-maker/static/js/2.0a047a1d.chunk.js"
+    "revision": "8ff7e49872913c640240",
+    "url": "/daily-scrum-maker/static/js/2.32f9f00a.chunk.js"
   },
   {
     "revision": "e3b2ee499c95ae4c1222aeba4b937bcb",
-    "url": "/daily-scrum-maker/static/js/2.0a047a1d.chunk.js.LICENSE.txt"
+    "url": "/daily-scrum-maker/static/js/2.32f9f00a.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "625f38d5284ce95928bd",
-    "url": "/daily-scrum-maker/static/js/main.67cfb74f.chunk.js"
+    "revision": "1fc7342179cdf10eeca2",
+    "url": "/daily-scrum-maker/static/js/main.c99454b0.chunk.js"
   },
   {
     "revision": "b0936dd1009e236e9012",

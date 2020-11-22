@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/daily-scrum-maker/precache-manifest.4fd1109ab41b93018b79d060d47a52a5.js"
+  "/daily-scrum-maker/precache-manifest.1f19dbc862467c40a11e18f4725394d8.js"
 );
 
 self.addEventListener('message', (event) => {

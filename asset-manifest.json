@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.js": "/daily-scrum-maker/static/js/main.67cfb74f.chunk.js",
-    "main.js.map": "/daily-scrum-maker/static/js/main.67cfb74f.chunk.js.map",
+    "main.js": "/daily-scrum-maker/static/js/main.c99454b0.chunk.js",
+    "main.js.map": "/daily-scrum-maker/static/js/main.c99454b0.chunk.js.map",
     "runtime-main.js": "/daily-scrum-maker/static/js/runtime-main.155c100c.js",
     "runtime-main.js.map": "/daily-scrum-maker/static/js/runtime-main.155c100c.js.map",
     "static/css/2.51270f71.chunk.css": "/daily-scrum-maker/static/css/2.51270f71.chunk.css",
-    "static/js/2.0a047a1d.chunk.js": "/daily-scrum-maker/static/js/2.0a047a1d.chunk.js",
-    "static/js/2.0a047a1d.chunk.js.map": "/daily-scrum-maker/static/js/2.0a047a1d.chunk.js.map",
+    "static/js/2.32f9f00a.chunk.js": "/daily-scrum-maker/static/js/2.32f9f00a.chunk.js",
+    "static/js/2.32f9f00a.chunk.js.map": "/daily-scrum-maker/static/js/2.32f9f00a.chunk.js.map",
     "index.html": "/daily-scrum-maker/index.html",
-    "precache-manifest.4fd1109ab41b93018b79d060d47a52a5.js": "/daily-scrum-maker/precache-manifest.4fd1109ab41b93018b79d060d47a52a5.js",
+    "precache-manifest.1f19dbc862467c40a11e18f4725394d8.js": "/daily-scrum-maker/precache-manifest.1f19dbc862467c40a11e18f4725394d8.js",
     "service-worker.js": "/daily-scrum-maker/service-worker.js",
     "static/css/2.51270f71.chunk.css.map": "/daily-scrum-maker/static/css/2.51270f71.chunk.css.map",
-    "static/js/2.0a047a1d.chunk.js.LICENSE.txt": "/daily-scrum-maker/static/js/2.0a047a1d.chunk.js.LICENSE.txt",
+    "static/js/2.32f9f00a.chunk.js.LICENSE.txt": "/daily-scrum-maker/static/js/2.32f9f00a.chunk.js.LICENSE.txt",
     "static/media/cloud.svg": "/daily-scrum-maker/static/media/cloud.2ad16239.svg",
     "static/media/cloud_dark.svg": "/daily-scrum-maker/static/media/cloud_dark.bbefb38a.svg",
     "static/media/many_clouds.svg": "/daily-scrum-maker/static/media/many_clouds.31d65b3b.svg",
@@ -21,7 +21,7 @@
   "entrypoints": [
     "static/js/runtime-main.155c100c.js",
     "static/css/2.51270f71.chunk.css",
-    "static/js/2.0a047a1d.chunk.js",
-    "static/js/main.67cfb74f.chunk.js"
+    "static/js/2.32f9f00a.chunk.js",
+    "static/js/main.c99454b0.chunk.js"
   ]
 }
